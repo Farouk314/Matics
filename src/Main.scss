@@ -1,0 +1,28 @@
+$gunGrey: #2c3539;
+$grey: #c8c8c8;
+$antiFlashWhite: #f2f3f4;
+
+.Btn {
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &.Primary {
+    border: 1px solid $grey;
+    color: #fff;
+    background-color: transparent;
+  }
+
+  &:hover {
+    background-color: $grey;
+    color: #000;
+  }
+}
+
+.Btn:focus {
+  outline: none;
+}

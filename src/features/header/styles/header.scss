@@ -1,0 +1,17 @@
+@import "../../../Main.scss";
+
+.AppHeader {
+  display: flex;
+  min-height: 60px;
+  background-color: $gunGrey;
+  font-size: 2rem;
+  color: $antiFlashWhite;
+  font-weight: 300;
+}
+
+.HeaderContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
