@@ -2,11 +2,15 @@
   "name": "modum",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://farouk314.github.io/Matics",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "@types/jest": "24.0.19",
     "@types/node": "12.11.1",
+    "@types/reach__router": "^1.2.6",
     "@types/react": "16.9.9",
     "@types/react-dom": "16.9.2",
+    "gh-pages": "^2.1.1",
     "node-sass": "^4.12.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -17,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
