@@ -12,9 +12,15 @@ $antiFlashWhite: #f2f3f4;
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &.Primary {
-    border: 1px solid $grey;
-    color: #fff;
+    border: 1px solid $antiFlashWhite;
+    color: $antiFlashWhite;
     background-color: transparent;
+  }
+
+  &.Grey {
+    border: 1px solid $gunGrey;
+    color: $antiFlashWhite;
+    background-color: $gunGrey;
   }
 
   &:hover {

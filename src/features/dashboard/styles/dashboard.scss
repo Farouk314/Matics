@@ -1,0 +1,33 @@
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+
+  .Title {
+    padding: 20px 0;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .EqnGenerator {
+    display: flex;
+    justify-content: space-between;
+    border: 5px solid #f2f3f4;
+    border-radius: 5px;
+
+    .Eqn {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  .BtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+}

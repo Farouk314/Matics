@@ -6,10 +6,10 @@ const Header = () => {
   return (
     <header className="AppHeader">
       <div className="HeaderContent WidthContent">
-        <Link to="/">
+        <Link to="/Matics">
           <span style={{ cursor: "pointer" }}>Matics</span>
         </Link>
-        <Link to="/login">
+        <Link to="/Matics/login">
           <button className="Btn Transparent Primary">Log In</button>
         </Link>
       </div>

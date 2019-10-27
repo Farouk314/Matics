@@ -1,0 +1,38 @@
+.EquationField {
+  display: flex;
+  .Inner {
+    display: flex;
+    position: relative;
+    // border: 1px solid darkcyan;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 4rem;
+
+    .Term {
+      display: flex;
+      position: relative;
+      padding-right: 15px;
+
+      &.WithPower {
+        padding-right: 25px;
+      }
+
+      .Coefficient {
+      }
+
+      .Variable {
+      }
+
+      .Power {
+        position: absolute;
+        font-size: 2rem;
+        top: 0;
+        right: 10px;
+      }
+    }
+
+    .Operator {
+      padding-right: 15px;
+    }
+  }
+}
