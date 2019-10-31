@@ -3,6 +3,7 @@ $grey: #c8c8c8;
 $antiFlashWhite: #f2f3f4;
 
 .Btn {
+  position: relative;
   border: 0;
   padding: 10px 20px;
   border-radius: 5px;
@@ -23,9 +24,25 @@ $antiFlashWhite: #f2f3f4;
     background-color: $gunGrey;
   }
 
+  &.LightGrey {
+    background-color: $antiFlashWhite;
+    color: #000;
+  }
+
   &:hover {
     background-color: $grey;
     color: #000;
+  }
+
+  &.WithIcon {
+    padding-left: 40px;
+    font-size: 1.6rem;
+
+    .Icon {
+      position: absolute;
+      left: 8px;
+      top: 5px;
+    }
   }
 }
 

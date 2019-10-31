@@ -1,3 +1,7 @@
+import { useLocalStorage } from "./hooks/useLocalStorage";
+
+const [localStorage, setLocalStorage] = useLocalStorage();
+
 type User = {
   username: string;
   password: string;
@@ -14,4 +18,12 @@ const users: User[] = [
   }
 ];
 
-export { users };
+const userLoggedIn = (): boolean => {
+  if (localStorage("userId") && localStorage("userId") !== "undefined") {
+    return true;
+  }
+
+  return false;
+};
+
+export { users, userLoggedIn, localStorage, setLocalStorage };

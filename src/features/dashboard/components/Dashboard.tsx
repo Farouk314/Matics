@@ -1,10 +1,15 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps, navigate } from "@reach/router";
 import "../styles/dashboard.scss";
 import { Polynomial } from "features/polynomial/components/polynomial";
 import { generateEasyQuadratic, TPolynomial } from "helpers/myMaths";
+import { users } from "helpers/auth";
+import sha256 from "sha256";
+import { localStorage } from "helpers/auth";
 
-type Props = RouteComponentProps;
+type DashboardProps = {};
+
+type Props = DashboardProps & RouteComponentProps;
 
 const Dashboard: React.FC<Props> = () => {
   const [quadratic, setQuadratic] = React.useState<TPolynomial>({
@@ -17,6 +22,25 @@ const Dashboard: React.FC<Props> = () => {
     setGenerate(false);
     setQuadratic(generateEasyQuadratic());
   }, [generate]);
+
+  const GetUserDash = (userId: string | null) => {
+    if (!localStorage("userId") || localStorage("userId") === "undefined") {
+      navigate("/Matics/login");
+    }
+
+    const user = users.find(user => sha256(user.password) === userId);
+
+    if (user) {
+      switch (user.username) {
+        case "Naz":
+          return <span>Naz</span>;
+        case "Safiye":
+          return <span>Safiye</span>;
+        default:
+          return <span>NO USER FOUND</span>;
+      }
+    }
+  };
 
   return (
     <div className="Dashboard WidthContent">
@@ -35,6 +59,7 @@ const Dashboard: React.FC<Props> = () => {
           </button>
         </div>
       </div>
+      <div className="UserDash">{GetUserDash(localStorage("userId"))}</div>
     </div>
   );
 };

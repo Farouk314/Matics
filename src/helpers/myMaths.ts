@@ -23,9 +23,9 @@ const generateEasyQuadratic = (): TPolynomial => {
 
   polynomial.coefficients = [1, a + b, a * b];
 
-  console.log("Returning polynomial:");
-  console.log(polynomial.answers);
-  console.log(polynomial.coefficients);
+  // console.log("Returning polynomial:");
+  // console.log(polynomial.answers);
+  // console.log(polynomial.coefficients);
   return polynomial;
 };
 

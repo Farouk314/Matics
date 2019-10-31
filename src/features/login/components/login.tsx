@@ -3,19 +3,26 @@ import { RouteComponentProps, navigate } from "@reach/router";
 import "../styles/login.scss";
 import sha256 from "sha256";
 import { users } from "helpers/auth";
+import { setLocalStorage } from "helpers/auth";
 
 // Icons
 import { User } from "react-feather";
 import { Lock } from "react-feather";
+import { State, Action } from "App";
 
-type Props = RouteComponentProps;
+type LoginProps = {
+  state: State;
+  dispatch: React.Dispatch<Action>;
+};
+
+type Props = LoginProps & RouteComponentProps;
 
 type LoginDetails = {
   username: string;
   password: string;
 };
 
-const Login: React.FC<Props> = () => {
+const Login: React.FC<Props> = ({ state, dispatch }) => {
   const [loginDetails, setLoginDetails] = React.useState<LoginDetails>({
     username: "",
     password: ""
@@ -34,6 +41,11 @@ const Login: React.FC<Props> = () => {
         }
       }
       if (userFound) {
+        const userName = user.username;
+        const userId = sha256(user.password);
+        setLocalStorage("userId", userId);
+        setLocalStorage("userName", userName);
+        dispatch({ type: "SET_USER_DETAILS", user: { userId, userName } });
         navigate("dashboard");
       }
     }
