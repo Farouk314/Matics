@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.scss";
 import { Header } from "./features/header/components/header";
-import { Router } from "@reach/router";
+import { Router, LocationContext } from "@reach/router";
 import { Home } from "./features/home/components/home";
 import { Login } from "./features/login/components/login";
 import { Dashboard } from "./features/dashboard/components/Dashboard";
 import { Assignments } from "features/dashboard/components/Assignments";
-import { setLocalStorage } from "helpers/auth";
+import { setLocalStorage, userValid, getUserDetails } from "helpers/auth";
 
 const blankUserDetails: User = {
   userId: "",
@@ -14,8 +14,8 @@ const blankUserDetails: User = {
 };
 
 type User = {
-  userId: string;
-  userName: string;
+  userId: string | null;
+  userName: string | null;
 };
 
 export type State = {
@@ -52,20 +52,23 @@ const initialState = {
   user: blankUserDetails
 };
 
-const App: React.FC = () => {
+type AppProps = {
+  location: LocationContext;
+};
+
+type Props = AppProps;
+
+const App: React.FC<Props> = ({ location }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    const userId =
-      localStorage.getItem("userId") !== "undefined" ? localStorage.getItem("userId") : null;
-    const userName =
-      localStorage.getItem("userName") !== "undefined" ? localStorage.getItem("userName") : null;
-    if (userId && userName) {
+    if (userValid()) {
+      const { userName, userId } = getUserDetails();
       dispatch({ type: "SET_USER_DETAILS", user: { userId, userName } });
     } else {
       dispatch({ type: "SET_USER_LOGGED_OUT" });
     }
-  }, [dispatch]);
+  }, [dispatch, location]);
 
   return (
     <div className="App">

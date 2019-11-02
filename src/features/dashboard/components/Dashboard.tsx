@@ -3,7 +3,7 @@ import { RouteComponentProps, navigate } from "@reach/router";
 import "../styles/dashboard.scss";
 import { Polynomial } from "features/polynomial/components/polynomial";
 import { generateEasyQuadratic, TPolynomial } from "helpers/myMaths";
-import { users } from "helpers/auth";
+import { users, userValid } from "helpers/auth";
 import sha256 from "sha256";
 import { localStorage } from "helpers/auth";
 
@@ -16,18 +16,15 @@ const Dashboard: React.FC<Props> = () => {
     answers: [],
     coefficients: []
   });
-  const [generate, setGenerate] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    setGenerate(false);
-    setQuadratic(generateEasyQuadratic());
-  }, [generate]);
-
-  const GetUserDash = (userId: string | null) => {
-    if (!localStorage("userId") || localStorage("userId") === "undefined") {
+    if (!userValid()) {
       navigate("/Matics/login");
     }
+    setQuadratic(generateEasyQuadratic());
+  }, []);
 
+  const GetUserDash = (userId: string | null) => {
     const user = users.find(user => sha256(user.password) === userId);
 
     if (user) {
@@ -54,7 +51,7 @@ const Dashboard: React.FC<Props> = () => {
           )}
         </div>
         <div className="BtnContainer">
-          <button className="Btn Grey" onClick={() => setGenerate(true)}>
+          <button className="Btn Grey" onClick={() => setQuadratic(generateEasyQuadratic())}>
             Generate New Equation
           </button>
         </div>

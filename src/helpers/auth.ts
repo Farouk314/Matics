@@ -1,4 +1,5 @@
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import sha256 from "sha256";
 
 const [localStorage, setLocalStorage] = useLocalStorage();
 
@@ -26,4 +27,29 @@ const userLoggedIn = (): boolean => {
   return false;
 };
 
-export { users, userLoggedIn, localStorage, setLocalStorage };
+const userValid = (): boolean => {
+  const userName = localStorage("userName");
+  const userId = localStorage("userId");
+
+  let userFound = false;
+  if (!userId || !userName) {
+    return false;
+  } else {
+    users.forEach(u => {
+      if (sha256(u.password) === userId) {
+        userFound = true;
+      }
+    });
+  }
+
+  return userFound;
+};
+
+const getUserDetails = () => {
+  return {
+    userName: localStorage("userName") ? localStorage("userName") : "",
+    userId: localStorage("userId") ? localStorage("userId") : ""
+  };
+};
+
+export { users, userLoggedIn, localStorage, setLocalStorage, userValid, getUserDetails };

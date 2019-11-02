@@ -21,30 +21,32 @@ const Polynomial: React.FC<Props> = ({ order, coefficients, answer }) => {
     let index = 0;
     for (let power = order; power >= 0; power--) {
       if (coefficients[index] !== 0) {
-        if (coefficients[index] < 0) {
-          polynomial.push(<div className="Operator">-</div>);
-        } else {
-          if (power !== order) {
-            polynomial.push(<div className="Operator">+</div>);
-          }
-        }
         polynomial.push(
-          <div className={power > 1 ? "Term WithPower" : "Term"}>
-            <span className={power > 0 ? "Coefficient" : "Constant"}>
-              {coefficients[index] !== 1 && Math.abs(coefficients[index])}
-            </span>
-            {power > 0 && <span className="Variable">x</span>}
-            {power > 1 && <span className="Power">{power}</span>}
-          </div>
+          <React.Fragment key={index}>
+            {coefficients[index] < 0 ? (
+              <div className="Operator">-</div>
+            ) : (
+              power !== order && <div className="Operator">+</div>
+            )}
+            <div className={power > 1 ? "Term WithPower" : "Term"}>
+              <span className={power > 0 ? "Coefficient" : "Constant"}>
+                {power > 0
+                  ? coefficients[index] !== 1 && Math.abs(coefficients[index])
+                  : Math.abs(coefficients[index])}
+              </span>
+              {power > 0 && <span className="Variable">x</span>}
+              {power > 1 && <span className="Power">{power}</span>}
+            </div>
+          </React.Fragment>
         );
       }
       index = index + 1;
     }
     polynomial.push(
-      <>
+      <React.Fragment key={order + 1}>
         <div className="Operator">=</div>
         <div className="Constant">{answer}</div>
-      </>
+      </React.Fragment>
     );
 
     return polynomial;

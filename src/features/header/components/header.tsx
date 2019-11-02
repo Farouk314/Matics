@@ -14,7 +14,7 @@ type Props = HeaderProps;
 
 const Header: React.FC<Props> = ({ state, dispatch }) => {
   const handleClick = () => {
-    if (userLoggedIn) {
+    if (userLoggedIn()) {
       dispatch({ type: "SET_USER_LOGGED_OUT" });
       navigate("/Matics/login");
     } else {

@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps, navigate } from "@reach/router";
 import "../styles/login.scss";
 import sha256 from "sha256";
-import { users } from "helpers/auth";
+import { users, userValid } from "helpers/auth";
 import { setLocalStorage } from "helpers/auth";
 
 // Icons
@@ -27,8 +27,14 @@ const Login: React.FC<Props> = ({ state, dispatch }) => {
     username: "",
     password: ""
   });
-
+  const [wrongDetails, setWrongDetails] = React.useState<boolean>(false);
   const [emptyFieldsList, setEmptyFieldsList] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+    if (userValid()) {
+      navigate("/Matics/dashboard");
+    }
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,12 +47,15 @@ const Login: React.FC<Props> = ({ state, dispatch }) => {
         }
       }
       if (userFound) {
+        setWrongDetails(false);
         const userName = user.username;
         const userId = sha256(user.password);
         setLocalStorage("userId", userId);
         setLocalStorage("userName", userName);
         dispatch({ type: "SET_USER_DETAILS", user: { userId, userName } });
         navigate("dashboard");
+      } else {
+        setWrongDetails(true);
       }
     }
   };
@@ -87,6 +96,7 @@ const Login: React.FC<Props> = ({ state, dispatch }) => {
         <span className="Title">Log In</span>
         <span className="WarningMessage">
           {emptyFieldsList.length > 0 && "Hey! Fill in the details..."}
+          {wrongDetails && "Wrong login deets..."}
         </span>
         <div className="FormField WithIcon">
           <User className="Icon" color="#2c3539" size={20} />
