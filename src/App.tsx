@@ -76,7 +76,7 @@ const App: React.FC<Props> = ({ location }) => {
       <Router basepath="/Matics">
         <Home path="/" />
         <Login path="login" state={state} dispatch={dispatch} />
-        <Dashboard path="dashboard" />
+        <Dashboard path="dashboard" state={state} />
         <Assignments path="assignments" />
       </Router>
     </div>

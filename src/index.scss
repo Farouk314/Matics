@@ -1,4 +1,5 @@
 @import "./Main.scss";
+
 html,
 body {
   font-size: 62.5%;
@@ -34,3 +35,9 @@ a {
   padding: 0 60px;
   margin: 0 auto;
 }
+
+@import "./features/dashboard/styles/dashboard.scss";
+@import "./features/header/styles/header.scss";
+@import "./features/header/styles/userMenu.scss";
+@import "./features/login/styles/login.scss";
+@import "./features/polynomial/styles/polynomial.scss";

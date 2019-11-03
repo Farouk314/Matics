@@ -35,12 +35,23 @@ $antiFlashWhite: #f2f3f4;
   }
 
   &.WithIcon {
-    padding-left: 40px;
+    &.Left {
+      padding-left: 40px;
+    }
+
+    &.Right {
+      padding-right: 40px;
+    }
     font-size: 1.6rem;
 
-    .Icon {
+    .Icon.Left {
       position: absolute;
       left: 8px;
+      top: 5px;
+    }
+    .Icon.Right {
+      position: absolute;
+      right: 8px;
       top: 5px;
     }
   }

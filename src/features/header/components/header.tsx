@@ -1,9 +1,8 @@
 import React from "react";
-import "../styles/header.scss";
 import { Link, navigate } from "@reach/router";
 import { userLoggedIn } from "helpers/auth";
-import { User } from "react-feather";
 import { Action, State } from "App";
+import { UserMenu } from "./userMenu";
 
 type HeaderProps = {
   state: State;
@@ -28,15 +27,13 @@ const Header: React.FC<Props> = ({ state, dispatch }) => {
           <span style={{ cursor: "pointer" }}>Matics</span>
         </Link>
         <div className="UserPanel">
-          {state.user.userId && (
-            <button className="Btn Transparent Primary WithIcon LightGrey">
-              <User size={25} className="Icon" color="#000" />
-              {state.user.userName}
-            </button>
+          {state.user.userId ? (
+            <UserMenu state={state} dispatch={dispatch} />
+          ) : (
+            <Link to="/Matics/login">
+              <button className="Btn Primary">Log In</button>
+            </Link>
           )}
-          <button className="Btn Transparent Primary" onClick={handleClick}>
-            {state.user.userId ? "Log Out" : "Log In"}
-          </button>
         </div>
       </div>
     </header>

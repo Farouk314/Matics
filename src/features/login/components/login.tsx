@@ -1,6 +1,5 @@
 import React from "react";
 import { RouteComponentProps, navigate } from "@reach/router";
-import "../styles/login.scss";
 import sha256 from "sha256";
 import { users, userValid } from "helpers/auth";
 import { setLocalStorage } from "helpers/auth";

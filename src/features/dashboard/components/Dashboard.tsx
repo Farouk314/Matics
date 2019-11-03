@@ -1,28 +1,33 @@
 import React from "react";
 import { RouteComponentProps, navigate } from "@reach/router";
-import "../styles/dashboard.scss";
 import { Polynomial } from "features/polynomial/components/polynomial";
 import { generateEasyQuadratic, TPolynomial } from "helpers/myMaths";
 import { users, userValid } from "helpers/auth";
 import sha256 from "sha256";
 import { localStorage } from "helpers/auth";
+import { State } from "App";
 
-type DashboardProps = {};
+type DashboardProps = {
+  state: State;
+};
 
 type Props = DashboardProps & RouteComponentProps;
 
-const Dashboard: React.FC<Props> = () => {
+const Dashboard: React.FC<Props> = ({ state }) => {
   const [quadratic, setQuadratic] = React.useState<TPolynomial>({
     answers: [],
     coefficients: []
   });
 
   React.useEffect(() => {
+    setQuadratic(generateEasyQuadratic());
+  }, []);
+
+  React.useEffect(() => {
     if (!userValid()) {
       navigate("/Matics/login");
     }
-    setQuadratic(generateEasyQuadratic());
-  }, []);
+  }, [state.user]);
 
   const GetUserDash = (userId: string | null) => {
     const user = users.find(user => sha256(user.password) === userId);
