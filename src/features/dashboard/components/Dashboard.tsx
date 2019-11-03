@@ -1,7 +1,5 @@
 import React from "react";
 import { RouteComponentProps, navigate } from "@reach/router";
-import { Polynomial } from "features/polynomial/components/polynomial";
-import { generateEasyQuadratic, TPolynomial } from "helpers/myMaths";
 import { users, userValid } from "helpers/auth";
 import sha256 from "sha256";
 import { localStorage } from "helpers/auth";
@@ -14,15 +12,6 @@ type DashboardProps = {
 type Props = DashboardProps & RouteComponentProps;
 
 const Dashboard: React.FC<Props> = ({ state }) => {
-  const [quadratic, setQuadratic] = React.useState<TPolynomial>({
-    answers: [],
-    coefficients: []
-  });
-
-  React.useEffect(() => {
-    setQuadratic(generateEasyQuadratic());
-  }, []);
-
   React.useEffect(() => {
     if (!userValid()) {
       navigate("/Matics/login");
@@ -42,6 +31,8 @@ const Dashboard: React.FC<Props> = ({ state }) => {
           return <span>NO USER FOUND</span>;
       }
     }
+
+    return null;
   };
 
   return (
@@ -49,17 +40,10 @@ const Dashboard: React.FC<Props> = ({ state }) => {
       <span className="Title">
         <h1>Dashboard</h1>
       </span>
-      <div className="EqnGenerator">
-        <div className="Eqn">
-          {quadratic.coefficients.length > 0 && (
-            <Polynomial order={2} coefficients={quadratic.coefficients} answer={0} />
-          )}
-        </div>
-        <div className="BtnContainer">
-          <button className="Btn Grey" onClick={() => setQuadratic(generateEasyQuadratic())}>
-            Generate New Equation
-          </button>
-        </div>
+      <div className="CardList">
+        <ul>
+          <li>Equation Generator</li>
+        </ul>
       </div>
       <div className="UserDash">{GetUserDash(localStorage("userId"))}</div>
     </div>

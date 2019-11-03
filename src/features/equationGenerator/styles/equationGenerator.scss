@@ -1,0 +1,12 @@
+.EqnGenerator {
+  display: flex;
+  justify-content: space-between;
+  border: 5px solid #f2f3f4;
+  border-radius: 5px;
+
+  .Eqn {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+}

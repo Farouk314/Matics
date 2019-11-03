@@ -7,6 +7,7 @@ import { Login } from "./features/login/components/login";
 import { Dashboard } from "./features/dashboard/components/Dashboard";
 import { Assignments } from "features/dashboard/components/Assignments";
 import { setLocalStorage, userValid, getUserDetails } from "helpers/auth";
+import { EquationGenerator } from "features/equationGenerator/components/EquationGenerator";
 
 const blankUserDetails: User = {
   userId: "",
@@ -78,6 +79,7 @@ const App: React.FC<Props> = ({ location }) => {
         <Login path="login" state={state} dispatch={dispatch} />
         <Dashboard path="dashboard" state={state} />
         <Assignments path="assignments" />
+        <EquationGenerator path="equation-generator" />
       </Router>
     </div>
   );

@@ -7,7 +7,7 @@ type Props = AssignmentsProps & RouteComponentProps;
 
 const Assignments: React.FC<Props> = () => {
   return (
-    <div className="Assignments">
+    <div className="Assignments WidthContent">
       <span className="Title">Assignments</span>
       <div className="Body">Body</div>
     </div>

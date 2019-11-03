@@ -44,10 +44,7 @@ const UserMenu: React.FC<Props> = ({ state, dispatch }) => {
 
   return (
     <div className="UserMenu">
-      <button
-        className="Btn Transparent Primary WithIcon Left Right LightGrey"
-        onClick={handleMenuClick}
-      >
+      <button className="Btn LightGrey WithIcon Left Right" onClick={handleMenuClick}>
         <User size={25} className="Icon Left" color="#000" />
         {state.user.userName}
         <ChevronDown size={25} className="Icon Right Lower" color="#000" style={{ top: "8px" }} />

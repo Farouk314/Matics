@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, navigate } from "@reach/router";
-import { userLoggedIn } from "helpers/auth";
+import { Link } from "@reach/router";
 import { Action, State } from "App";
 import { UserMenu } from "./userMenu";
 
@@ -12,14 +11,6 @@ type HeaderProps = {
 type Props = HeaderProps;
 
 const Header: React.FC<Props> = ({ state, dispatch }) => {
-  const handleClick = () => {
-    if (userLoggedIn()) {
-      dispatch({ type: "SET_USER_LOGGED_OUT" });
-      navigate("/Matics/login");
-    } else {
-      navigate("/Matics/login");
-    }
-  };
   return (
     <header className="AppHeader">
       <div className="HeaderContent WidthContent">
