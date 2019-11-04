@@ -18,16 +18,19 @@ const EquationGenerator: React.FC<Props> = () => {
   }, []);
 
   return (
-    <div className="EqnGenerator">
-      <div className="Eqn">
-        {quadratic.coefficients.length > 0 && (
-          <Polynomial order={2} coefficients={quadratic.coefficients} answer={0} />
-        )}
-      </div>
-      <div className="BtnContainer">
-        <button className="Btn Grey" onClick={() => setQuadratic(generateEasyQuadratic())}>
-          Generate New Equation
-        </button>
+    <div className="WidthContent">
+      <h1>Equation Generator</h1>
+      <div className="EqnGenerator">
+        <div className="Eqn">
+          {quadratic.coefficients.length > 0 && (
+            <Polynomial order={2} coefficients={quadratic.coefficients} answer={0} />
+          )}
+        </div>
+        <div className="BtnContainer">
+          <button className="Btn Grey" onClick={() => setQuadratic(generateEasyQuadratic())}>
+            Generate New Equation
+          </button>
+        </div>
       </div>
     </div>
   );

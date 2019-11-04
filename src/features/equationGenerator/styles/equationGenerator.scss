@@ -1,8 +1,10 @@
 .EqnGenerator {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border: 5px solid #f2f3f4;
   border-radius: 5px;
+  padding: 0 20px;
 
   .Eqn {
     display: flex;

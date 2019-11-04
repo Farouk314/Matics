@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import { Header } from "./features/header/components/header";
-import { Router, LocationContext } from "@reach/router";
+import { Router, LocationContext, navigate } from "@reach/router";
 import { Home } from "./features/home/components/home";
 import { Login } from "./features/login/components/login";
 import { Dashboard } from "./features/dashboard/components/Dashboard";
@@ -61,6 +61,13 @@ type Props = AppProps;
 
 const App: React.FC<Props> = ({ location }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  React.useEffect(() => {
+    navigate("/Matics");
+    return () => {
+      navigate("/Matics");
+    };
+  }, []);
 
   React.useEffect(() => {
     if (userValid()) {

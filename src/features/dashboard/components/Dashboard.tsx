@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps, navigate } from "@reach/router";
+import { RouteComponentProps, navigate, Link } from "@reach/router";
 import { users, userValid } from "helpers/auth";
 import sha256 from "sha256";
 import { localStorage } from "helpers/auth";
@@ -42,7 +42,9 @@ const Dashboard: React.FC<Props> = ({ state }) => {
       </span>
       <div className="CardList">
         <ul>
-          <li>Equation Generator</li>
+          <Link to="/Matics/equation-generator">
+            <li>Equation Generator</li>
+          </Link>
         </ul>
       </div>
       <div className="UserDash">{GetUserDash(localStorage("userId"))}</div>
