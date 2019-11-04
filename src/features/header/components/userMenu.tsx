@@ -3,6 +3,7 @@ import { Action, State } from "App";
 import { User, ChevronDown } from "react-feather";
 import { Transition } from "react-transition-group";
 import { navigate } from "@reach/router";
+import { useOnClickOutside } from "helpers/hooks/useOnClickOutside";
 
 type UserMenuProps = {
   state: State;
@@ -14,21 +15,23 @@ type Props = UserMenuProps;
 const UserMenu: React.FC<Props> = ({ state, dispatch }) => {
   const [dropdownVisible, setDropdownVisible] = React.useState<boolean>(false);
 
-  const wrapperRef = React.useRef(null);
+  // const wrapperRef = React.useRef(null);
 
-  React.useEffect(() => {
-    const handleClickOutside = (e: MouseEvent, ref: React.MutableRefObject<any>) => {
-      if (ref.current && !ref.current.contains(e.target)) {
-        setDropdownVisible(false);
-      }
-    };
-    const clickOutsideListener = (e: MouseEvent) => handleClickOutside(e, wrapperRef);
-    document.addEventListener("click", clickOutsideListener);
+  // React.useEffect(() => {
+  //   const handleClickOutside = (e: MouseEvent, ref: React.MutableRefObject<any>) => {
+  //     if (ref.current && !ref.current.contains(e.target)) {
+  //       setDropdownVisible(false);
+  //     }
+  //   };
+  //   const clickOutsideListener = (e: MouseEvent) => handleClickOutside(e, wrapperRef);
+  //   document.addEventListener("click", clickOutsideListener);
 
-    return () => {
-      document.removeEventListener("click", clickOutsideListener);
-    };
-  }, [dropdownVisible]);
+  //   return () => {
+  //     document.removeEventListener("click", clickOutsideListener);
+  //   };
+  // }, [dropdownVisible]);
+
+  const bind = useOnClickOutside(() => setDropdownVisible(false));
 
   const handleMenuClick = () => {
     if (dropdownVisible) {
@@ -51,7 +54,7 @@ const UserMenu: React.FC<Props> = ({ state, dispatch }) => {
       </button>
       <Transition in={dropdownVisible} timeout={100}>
         {transitionState => (
-          <div className={"UserMenuDropdown " + transitionState} ref={wrapperRef}>
+          <div className={"UserMenuDropdown " + transitionState} ref={bind.ref}>
             <ul className="Menu">
               <li
                 className="Item"
