@@ -43,7 +43,9 @@ const Dashboard: React.FC<Props> = ({ state }) => {
       <div className="CardList">
         <ul>
           <Link to="/Matics/equation-generator">
-            <li>Equation Generator</li>
+            <li>
+              <span>Equation Generator</span>
+            </li>
           </Link>
         </ul>
       </div>

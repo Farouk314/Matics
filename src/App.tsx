@@ -63,13 +63,6 @@ const App: React.FC<Props> = ({ location }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   React.useEffect(() => {
-    navigate("/Matics");
-    return () => {
-      navigate("/Matics");
-    };
-  }, []);
-
-  React.useEffect(() => {
     if (userValid()) {
       const { userName, userId } = getUserDetails();
       dispatch({ type: "SET_USER_DETAILS", user: { userId, userName } });
