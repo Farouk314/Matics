@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Matics/static/css/main.5dffae14.chunk.css",
-    "main.js": "/Matics/static/js/main.665e0bc0.chunk.js",
-    "main.js.map": "/Matics/static/js/main.665e0bc0.chunk.js.map",
+    "main.js": "/Matics/static/js/main.adb909d2.chunk.js",
+    "main.js.map": "/Matics/static/js/main.adb909d2.chunk.js.map",
     "runtime-main.js": "/Matics/static/js/runtime-main.75ff0449.js",
     "runtime-main.js.map": "/Matics/static/js/runtime-main.75ff0449.js.map",
     "static/js/2.53f4a509.chunk.js": "/Matics/static/js/2.53f4a509.chunk.js",
     "static/js/2.53f4a509.chunk.js.map": "/Matics/static/js/2.53f4a509.chunk.js.map",
     "index.html": "/Matics/index.html",
-    "precache-manifest.598c6d524457d8b20caeda56718eb94d.js": "/Matics/precache-manifest.598c6d524457d8b20caeda56718eb94d.js",
+    "precache-manifest.36e18aa23ed63a44ec23cb1bc51c9374.js": "/Matics/precache-manifest.36e18aa23ed63a44ec23cb1bc51c9374.js",
     "service-worker.js": "/Matics/service-worker.js",
     "static/css/main.5dffae14.chunk.css.map": "/Matics/static/css/main.5dffae14.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.75ff0449.js",
     "static/js/2.53f4a509.chunk.js",
     "static/css/main.5dffae14.chunk.css",
-    "static/js/main.665e0bc0.chunk.js"
+    "static/js/main.adb909d2.chunk.js"
   ]
 }
